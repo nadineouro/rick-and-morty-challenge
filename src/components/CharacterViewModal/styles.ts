@@ -53,6 +53,6 @@ export const MainContent = styled.div`
   flex: 1;
   padding: 70px;
   ${PlacementDescription} {
-    margin-bottom: 60px;
+    margin-top: 60px;
   }
 `;

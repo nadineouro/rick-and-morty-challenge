@@ -27,9 +27,13 @@ const Home: React.FC<any> = () => {
           character={{
             name: "Rick Sanchez",
             species: "Human",
+            type: "",
             image,
             origin: placementMock,
             location: placementMock,
+            gender: "Male",
+            status: "Alive",
+            episodes: [{ air_date: "May 31, 2020" }],
           }}
           onClose={() => setModalOpen(false)}
         />

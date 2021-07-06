@@ -2,7 +2,8 @@ import React from "react";
 import Modal from "../Modal";
 import * as S from "./styles";
 import Button from "../Button";
-import Card from "../Card";
+import About from "../About";
+// import Card from "../Card";
 import PlacementDescription from "../PlacementDescription";
 
 type Placement = {
@@ -12,12 +13,20 @@ type Placement = {
   residents?: number;
 };
 
+export type Episode = {
+  air_date: string;
+};
+
 type Character = {
   name: string;
   species: string;
+  type: string;
   image: string;
   origin: Placement;
   location: Placement;
+  gender: string;
+  status: string;
+  episodes: Episode[];
 };
 
 type Props = {
@@ -29,7 +38,17 @@ type Props = {
 const CharacterViewModal: React.FC<Props> = ({
   open,
   onClose,
-  character: { name, species, image, origin, location },
+  character: {
+    name,
+    species,
+    image,
+    origin,
+    location,
+    gender,
+    status,
+    episodes,
+    type,
+  },
 }) => {
   return (
     <Modal open={open} onClose={onClose}>
@@ -47,6 +66,14 @@ const CharacterViewModal: React.FC<Props> = ({
           </S.Content>
         </S.SideContent>
         <S.MainContent>
+          <About
+            name={name}
+            gender={gender}
+            species={species}
+            type={type}
+            status={status}
+            episodes={episodes}
+          />
           <PlacementDescription
             title="Origin"
             type={origin.type}
