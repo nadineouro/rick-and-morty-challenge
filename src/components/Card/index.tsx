@@ -17,8 +17,13 @@ const Card: React.FC<Props> = ({
   size = "small",
 }) => {
   return (
-    <S.Container active={false} simple={simple} size={size}>
-      <S.Image src={image} alt="img" />
+    <S.Container
+      src={image}
+      alt="img"
+      active={false}
+      simple={simple}
+      size={size}
+    >
       <S.CardContent>
         <S.MainText>{mainText}</S.MainText>
         <S.SubText>{subText}</S.SubText>

@@ -15,8 +15,8 @@ export default createGlobalStyle`
     font-family: "Nunito", sans-serif;
     font-size: 16px;
     font-weight: 400;
-  }
-  strong {
-    font-weight: 700;
+    strong {
+      font-weight: 700;
+    }
   }
 `;

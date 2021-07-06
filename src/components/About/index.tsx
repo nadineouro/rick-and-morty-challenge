@@ -5,14 +5,18 @@ import { Episode } from "../CharacterViewModal";
 import * as S from "./styles";
 import { getDescription } from "./helpers";
 
-export type Props = {
+export type Character = {
+  id: number;
   name: string;
   gender: string;
   species: string;
   status: string;
   episodes: Episode[];
   type: string;
+  image: string;
 };
+
+export type Props = Omit<Character, "id" | "image">;
 
 const About: React.FC<Props> = (props) => {
   const description = getDescription(props);

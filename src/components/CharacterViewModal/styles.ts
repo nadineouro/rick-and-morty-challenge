@@ -27,13 +27,14 @@ export const SideContent = styled.div`
 export const BackgroundImage = styled.div<BackgroundPropsImage>`
   background-image: url(${(props) => props.image});
   background-size: cover;
+  background-position: center;
   height: 100%;
   opacity: 0.3;
-  filter: blur(20px);
-  -webkit-filter: blur(20px);
-  -moz-filter: blur(20px);
-  -o-filter: blur(20px);
-  -ms-filter: blur(20px);
+  filter: blur(25px);
+  -webkit-filter: blur(25px);
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
 `;
 
 export const Content = styled.div`
