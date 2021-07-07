@@ -3,7 +3,7 @@ import Modal from "../Modal";
 import * as S from "./styles";
 import Button from "../Button";
 import About from "../About";
-// import Card from "../Card";
+import Card from "../Card";
 import PlacementDescription from "../PlacementDescription";
 
 type Placement = {
@@ -57,12 +57,13 @@ const CharacterViewModal: React.FC<Props> = ({
           <S.BackgroundImage image={image} />
           <S.Content>
             <Button onClick={onClose}>Close</Button>
-            {/* <Card
+            <Card
               image={image}
               mainText={name}
               subText={species}
               size="large"
-            /> */}
+              simple
+            />
           </S.Content>
         </S.SideContent>
         <S.MainContent>

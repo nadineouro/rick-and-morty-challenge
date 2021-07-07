@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../styles/shared/colors";
 import { Button } from "../Button/styles";
 import { Container as CardContainer } from "../Card/styles";
 import { Container as PlacementDescription } from "../PlacementDescription/styles";
@@ -11,7 +12,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: ${colors.black};
   width: 100%;
   height: 100%;
   border-radius: 16px;
@@ -19,7 +20,7 @@ export const Container = styled.div`
 
 export const SideContent = styled.div`
   overflow: hidden;
-  width: 40%;
+  width: 32%;
   height: 100%;
   border-radius: 16px 0 0 16px;
 `;
@@ -31,22 +32,20 @@ export const BackgroundImage = styled.div<BackgroundPropsImage>`
   height: 100%;
   opacity: 0.3;
   filter: blur(25px);
-  -webkit-filter: blur(25px);
-  -moz-filter: blur(25px);
-  -o-filter: blur(25px);
-  -ms-filter: blur(25px);
 `;
 
 export const Content = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px;
+  width: 32%;
+  height: 100%;
+  margin: 20px;
   ${Button} {
     margin-bottom: 20px;
   }
   ${CardContainer} {
-    margin-left: -25%;
+    margin-left: -20%;
   }
 `;
 

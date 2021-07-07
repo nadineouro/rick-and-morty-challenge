@@ -20,9 +20,9 @@ const Home: React.FC<any> = () => {
   const [modalOpen, setModalOpen] = React.useState<boolean>(true);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [characters, setCharacters] = React.useState<any>();
+  const [activeCharacter, setActiveCharacter] = React.useState<number>();
 
   const character = {
-    id: 1,
     name: "Rick Sanchez",
     species: "Human",
     type: "",
@@ -34,16 +34,26 @@ const Home: React.FC<any> = () => {
     episodes: [{ air_date: "May 31, 2020" }],
   };
 
+  const handleClose = () => {
+    setActiveCharacter(undefined);
+    setModalOpen(false);
+  };
+
+  const handleClickCard = (id?: number) => {
+    setActiveCharacter(id);
+    setModalOpen(true);
+  };
+
   const handleClickSearch = () => {
     setCharacters(undefined);
     setLoading(true);
     setTimeout(() => {
       const chars = Array(12)
         .fill("")
-        .map(() => character);
+        .map((_, index) => ({ id: index + 1, ...character }));
       setCharacters(chars);
       setLoading(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -54,10 +64,14 @@ const Home: React.FC<any> = () => {
         <Input placeholder="Search characteres" />
         <Button onClick={handleClickSearch}>Search</Button>
       </S.InputGroup>
-      <CharacterList characters={characters} />
+      <CharacterList
+        characters={characters}
+        onClick={handleClickCard}
+        active={activeCharacter}
+      />
       <CharacterViewModal
         open={modalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={handleClose}
         character={character}
       />
     </S.Container>

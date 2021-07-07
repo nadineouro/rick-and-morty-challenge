@@ -10,6 +10,6 @@ export const Container = styled.div`
   max-width: 90%;
   margin: 70px 0;
   ${Card} {
-    margin: 20px;
+    margin: 24px;
   }
 `;

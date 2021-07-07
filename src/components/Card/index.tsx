@@ -7,26 +7,40 @@ type Props = {
   subText: string;
   simple?: boolean;
   size?: "small" | "large";
+  active?: boolean;
+  bw?: boolean;
+  id?: number;
+  onClick?: (id?: number) => void;
 };
 
 const Card: React.FC<Props> = ({
+  id,
   image,
   mainText,
   subText,
   simple = false,
   size = "small",
+  active = false,
+  bw = false,
+  onClick,
 }) => {
+  const handleClick = (id?: number) => onClick && onClick(id);
+
   return (
     <S.Container
-      src={image}
-      alt="img"
-      active={false}
+      image={image}
+      active={active}
       simple={simple}
       size={size}
+      bw={bw}
+      onClick={() => handleClick(id)}
     >
+      <S.Background />
       <S.CardContent>
-        <S.MainText>{mainText}</S.MainText>
-        <S.SubText>{subText}</S.SubText>
+        <S.TextContent>
+          <S.MainText>{mainText}</S.MainText>
+          <S.SubText>{subText}</S.SubText>
+        </S.TextContent>
       </S.CardContent>
     </S.Container>
   );

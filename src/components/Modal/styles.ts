@@ -9,7 +9,7 @@ export const ModalContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 72%;
+  width: 70%;
   height: 90%;
   background-color: #fff;
   border-radius: 16px;

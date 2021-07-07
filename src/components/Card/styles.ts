@@ -1,50 +1,89 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import colors from "../../styles/shared/colors";
 
-type ContainerProps = {
-  src: string;
-  alt: string;
+type CardProps = {
+  image: string;
   active: boolean;
   simple: boolean;
   size: "small" | "large";
+  bw: boolean;
 };
 
-export const Container = styled.div<ContainerProps>`
-  display: flex;
-  align-items: flex-end;
-  width: ${(props) => (props.size === "small" ? 224 : 400)}px;
-  height: ${(props) => (props.size === "small" ? 224 : 400)}px;
-  border: 2px solid
-    ${(props) => (props.active ? colors.neonGreen : colors.darkGray)};
-  background-image: url(${(props) => props.src});
-  background-size: cover;
-  border-radius: 8px;
+const getActiveCardStyle = () => css`
+  border-color: ${colors.neonGreen};
+  box-shadow: 0 0 10px ${colors.neonGreen};
 `;
 
-// export const Image = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   border-radius: 8px 8px 0 0;
-// `;
+const getBackgroundStyle = (image: string, bw: boolean) => css`
+  background-image: url(${image});
+  background-position: center;
+  background-size: cover;
+  ${bw &&
+  css`
+    filter: grayscale();
+  `};
+`;
+
+export const Background = styled.div`
+  width: 100%;
+`;
 
 export const CardContent = styled.div`
+  width: 100%;
+`;
+
+export const Container = styled.div<CardProps>`
+  ${(props) => css`
+    height: ${props.size === "small" ? "224px" : "80%"};
+    width: ${props.size === "small" ? "224px" : "100%"};
+    overflow: hidden;
+    border: 2px solid ${colors.darkGray};
+    border-radius: 8px;
+    ${props.active && getActiveCardStyle()}
+    ${
+      !props.simple &&
+      css`
+        &:hover {
+          ${getActiveCardStyle()}
+          cursor: pointer;
+        }
+      `
+    }
+    ${Background} {
+      height: ${props.simple ? "90%" : "75%"};
+      ${getBackgroundStyle(props.image, props.bw)}
+    }
+    ${CardContent} {
+      height: ${props.simple ? "10%" : "25%"};
+      ${!props.simple && getBackgroundStyle(props.image, props.bw)}
+  `};
+`;
+
+export const TextContent = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px 15px;
-  background: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  height: 100%;
+  backdrop-filter: blur(6px) brightness(25%);
 `;
 
 export const MainText = styled.strong`
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 100%;
   font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
   color: ${colors.white};
 `;
 
 export const SubText = styled.div`
   width: 100%;
   font-size: 12px;
+  line-height: 15px;
   color: ${colors.white};
 `;
