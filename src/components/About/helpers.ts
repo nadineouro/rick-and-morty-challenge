@@ -45,7 +45,7 @@ const getPhraseDetails = ({
   status,
   gender,
   species,
-  episodes,
+  episode,
   type,
 }: Props) => {
   const { pronoun } = getBasedOnGender(gender);
@@ -56,7 +56,7 @@ const getPhraseDetails = ({
     statusPhrase,
     formattedGender: getFormattedGender(gender),
     formattedSpecies: getFormattedSpecies(species, type),
-    lastSeen: episodes[episodes.length - 1].air_date,
+    lastSeen: episode[episode.length - 1].air_date,
   };
 };
 

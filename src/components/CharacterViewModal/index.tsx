@@ -5,29 +5,7 @@ import Button from "../Button";
 import About from "../About";
 import Card from "../Card";
 import PlacementDescription from "../PlacementDescription";
-
-type Placement = {
-  type?: string;
-  name?: string;
-  dimension?: string;
-  residents?: number;
-};
-
-export type Episode = {
-  air_date: string;
-};
-
-type Character = {
-  name: string;
-  species: string;
-  type: string;
-  image: string;
-  origin: Placement;
-  location: Placement;
-  gender: string;
-  status: string;
-  episodes: Episode[];
-};
+import { Character } from "../../services/character/types";
 
 type Props = {
   open: boolean;
@@ -46,7 +24,7 @@ const CharacterViewModal: React.FC<Props> = ({
     location,
     gender,
     status,
-    episodes,
+    episode,
     type,
   },
 }) => {
@@ -73,21 +51,21 @@ const CharacterViewModal: React.FC<Props> = ({
             species={species}
             type={type}
             status={status}
-            episodes={episodes}
+            episode={episode}
           />
           <PlacementDescription
             title="Origin"
-            type={origin.type}
-            name={origin.name}
-            dimension={origin.dimension}
-            residents={origin.residents}
+            type={origin?.type}
+            name={origin?.name}
+            dimension={origin?.dimension}
+            residents={origin?.residents}
           />
           <PlacementDescription
             title="Location"
-            type={location.type}
-            name={location.name}
-            dimension={location.dimension}
-            residents={location.residents}
+            type={location?.type}
+            name={location?.name}
+            dimension={location?.dimension}
+            residents={location?.residents}
           />
         </S.MainContent>
       </S.Container>

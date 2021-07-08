@@ -7,32 +7,20 @@ import CharacterViewModal from "../components/CharacterViewModal";
 import Loading from "../components/Loading";
 import CharacterList from "../components/CharacterList";
 
-const image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg";
-
-const placementMock = {
-  type: "Planet",
-  name: "Earth (Replacement Dimension)",
-  dimension: "Replacement Dimension",
-  residents: 54,
-};
+import { useApolloClient } from "@apollo/client";
+import { GET_CHARACTERS } from "../services/character/query";
+import { Character, CharactersArgs } from "../services/character/types";
 
 const Home: React.FC<any> = () => {
-  const [modalOpen, setModalOpen] = React.useState<boolean>(true);
+  const client = useApolloClient();
+
+  const [modalOpen, setModalOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [characters, setCharacters] = React.useState<any>();
-  const [activeCharacter, setActiveCharacter] = React.useState<number>();
+  const [activeCharacter, setActiveCharacter] = React.useState<Character>();
+  const [inputSearch, setInputSearch] = React.useState<string>("");
 
-  const character = {
-    name: "Rick Sanchez",
-    species: "Human",
-    type: "",
-    image,
-    origin: placementMock,
-    location: placementMock,
-    gender: "Male",
-    status: "Alive",
-    episodes: [{ air_date: "May 31, 2020" }],
-  };
+  const handleInputChange = (e: any) => setInputSearch(e.target.value);
 
   const handleClose = () => {
     setActiveCharacter(undefined);
@@ -40,40 +28,59 @@ const Home: React.FC<any> = () => {
   };
 
   const handleClickCard = (id?: number) => {
-    setActiveCharacter(id);
+    const currCharacter = characters.find(
+      (character: Character) => character.id === id
+    );
+    setActiveCharacter(currCharacter);
     setModalOpen(true);
   };
 
-  const handleClickSearch = () => {
+  const handleSubmitSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const variables: CharactersArgs = {
+      page: 1,
+      filter: { name: inputSearch },
+    };
+
     setCharacters(undefined);
     setLoading(true);
-    setTimeout(() => {
-      const chars = Array(12)
-        .fill("")
-        .map((_, index) => ({ id: index + 1, ...character }));
-      setCharacters(chars);
-      setLoading(false);
-    }, 500);
+
+    const { data: { characters } = {} } = await client.query({
+      query: GET_CHARACTERS,
+      variables,
+      errorPolicy: "ignore",
+    });
+
+    const { results } = characters || {};
+
+    setCharacters(results);
+    setLoading(false);
   };
 
   return (
     <S.Container>
       {loading && <Loading />}
       <Logo />
-      <S.InputGroup>
-        <Input placeholder="Search characteres" />
-        <Button onClick={handleClickSearch}>Search</Button>
+      <S.InputGroup onSubmit={handleSubmitSearch}>
+        <Input
+          value={inputSearch}
+          onChange={handleInputChange}
+          placeholder="Search characteres"
+        />
+        <Button type="submit">Search</Button>
       </S.InputGroup>
       <CharacterList
         characters={characters}
         onClick={handleClickCard}
-        active={activeCharacter}
+        active={activeCharacter?.id}
       />
-      <CharacterViewModal
-        open={modalOpen}
-        onClose={handleClose}
-        character={character}
-      />
+      {activeCharacter && (
+        <CharacterViewModal
+          open={modalOpen}
+          onClose={handleClose}
+          character={activeCharacter}
+        />
+      )}
     </S.Container>
   );
 };

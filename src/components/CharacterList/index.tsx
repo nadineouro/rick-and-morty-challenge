@@ -1,5 +1,5 @@
 import React from "react";
-import { Character } from "../About";
+import { Character } from "../../services/character/types";
 import Card from "../Card";
 
 import * as S from "./styles";
