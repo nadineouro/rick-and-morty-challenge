@@ -7,9 +7,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 90%;
+  max-width: 80%;
   margin: 70px 0;
   ${Card} {
-    margin: 24px;
+    margin: 12px;
   }
 `;

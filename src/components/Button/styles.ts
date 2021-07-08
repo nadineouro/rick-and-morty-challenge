@@ -8,8 +8,4 @@ export const Button = styled.button`
   color: ${colors.white};
   background: transparent;
   cursor: pointer;
-  &:hover {
-    border-color: ${colors.neonGreen};
-    color: ${colors.neonGreen};
-  }
 `;

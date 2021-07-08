@@ -12,7 +12,7 @@ export const Container = styled.div`
   }
 `;
 
-export const InputGroup = styled.div`
+export const InputGroup = styled.form`
   display: flex;
   flex-direction: row;
   ${Input} {

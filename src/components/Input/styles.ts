@@ -8,8 +8,4 @@ export const Input = styled.input`
   color: ${colors.white};
   background: transparent;
   cursor: pointer;
-  &:hover {
-    border-color: ${colors.neonGreen};
-    color: ${colors.neonGreen};
-  }
 `;
