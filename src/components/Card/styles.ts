@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import colors from "../../styles/shared/colors";
+import { mobileAndTablet, mediumScreen } from "../../styles/shared/breakpoints";
 
 type CardProps = {
   image: string;
@@ -42,7 +43,8 @@ export const Container = styled.div<CardProps>`
     ${props.active && getActiveCardStyle()}
     ${!props.simple &&
     css`
-      &:hover {
+      &:hover,
+      &:active {
         ${getActiveCardStyle()}
         cursor: pointer;
       }
@@ -55,6 +57,21 @@ export const Container = styled.div<CardProps>`
       height: ${props.simple ? "10%" : "25%"};
       ${!props.simple && getBackgroundStyle(props.image, props.bw)};
     }
+
+    ${mobileAndTablet} {
+      height: ${props.size === "large" && "190px"};
+      width: ${props.size === "large" && "70%"};
+      ${Background} {
+        height: 70%;
+      }
+      ${CardContent} {
+        height: 30%;
+        ${getBackgroundStyle(props.image, props.bw)}
+      }
+    }
+    ${mediumScreen} {
+      height: ${props.size === "large" && "230px"};
+    }
   `};
 `;
 
@@ -66,6 +83,9 @@ export const TextContent = styled.div`
   padding: 0 15px;
   height: 100%;
   backdrop-filter: blur(6px) brightness(25%);
+  ${mobileAndTablet} {
+    backdrop-filter: blur(10px) brightness(25%);
+  }
 `;
 
 export const MainText = styled.strong`

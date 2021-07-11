@@ -7,6 +7,9 @@ import Card from "../Card";
 import PlacementDescription from "../PlacementDescription";
 import { Character } from "../../services/character/types";
 
+import useDevice from "../../utils/useDevice";
+import close from "../../assets/icons/close.svg";
+
 type Props = {
   open: boolean;
   onClose?: () => void;
@@ -28,13 +31,16 @@ const CharacterViewModal: React.FC<Props> = ({
     type,
   },
 }) => {
+  const { isMobileOrTablet } = useDevice();
   return (
     <Modal open={open} onClose={onClose}>
       <S.Container>
         <S.SideContent>
           <S.BackgroundImage image={image} />
           <S.Content>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={onClose}>
+              {isMobileOrTablet ? <img src={close} alt="fechar" /> : "Close"}
+            </Button>
             <Card
               image={image}
               mainText={name}

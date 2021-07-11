@@ -7,5 +7,4 @@ export const Input = styled.input`
   border-radius: 8px;
   color: ${colors.white};
   background: transparent;
-  cursor: pointer;
 `;

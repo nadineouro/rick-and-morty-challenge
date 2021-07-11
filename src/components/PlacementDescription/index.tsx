@@ -4,6 +4,8 @@ import * as S from "./styles";
 import people from "../../assets/icons/people.svg";
 import { Resident } from "../../services/character/types";
 
+import useDevice from "../../utils/useDevice";
+
 type Props = {
   title: string;
   type?: string;
@@ -19,6 +21,8 @@ const PlacementDescription: React.FC<Props> = ({
   dimension,
   residents,
 }) => {
+  const { isMobileOrTablet } = useDevice();
+  if (isMobileOrTablet && (!type || !name || !dimension)) return null;
   return (
     <S.Container>
       <Title>{title}</Title>

@@ -12,7 +12,7 @@ const Loading: React.FC<Props> = ({ isShowing = true }) => {
     <S.Overlay>
       <S.Container>
         <S.Image src={loading} />
-        <S.Text>Loading...</S.Text>
+        <S.Text>Loading</S.Text>
       </S.Container>
     </S.Overlay>
   );

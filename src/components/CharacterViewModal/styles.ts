@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "../../styles/shared/colors";
+import { mobileAndTablet, mediumScreen } from "../../styles/shared/breakpoints";
 import { Button } from "../Button/styles";
 import { Container as CardContainer } from "../Card/styles";
 import { Container as PlacementDescription } from "../PlacementDescription/styles";
@@ -16,6 +17,10 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 16px;
+
+  ${mobileAndTablet} {
+    flex-direction: column;
+  }
 `;
 
 export const SideContent = styled.div`
@@ -23,6 +28,12 @@ export const SideContent = styled.div`
   width: 32%;
   height: 100%;
   border-radius: 16px 0 0 16px;
+
+  ${mobileAndTablet} {
+    width: 100%;
+    height: 12%;
+    border-radius: 16px 16px 0 0;
+  }
 `;
 
 export const BackgroundImage = styled.div<BackgroundPropsImage>`
@@ -47,6 +58,29 @@ export const Content = styled.div`
   ${CardContainer} {
     margin-left: -20%;
   }
+
+  ${mobileAndTablet} {
+    margin: 0;
+    width: 100%;
+    height: 15%;
+    margin-top: -45%;
+    ${Button} {
+      position: absolute;
+      top: 50%;
+      border: none;
+    }
+    ${CardContainer} {
+      margin: auto;
+      margin-top: 20%;
+    }
+  }
+
+  ${mediumScreen} {
+    margin-top: -35%;
+    ${Button} {
+      top: 180%;
+    }
+  }
 `;
 
 export const MainContent = styled.div`
@@ -54,5 +88,20 @@ export const MainContent = styled.div`
   padding: 70px;
   ${PlacementDescription} {
     margin-top: 60px;
+  }
+
+  ${mobileAndTablet} {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 20px;
+
+    ${PlacementDescription} {
+      margin-top: 40px;
+    }
+  }
+
+  ${mediumScreen} {
+    top: 30%;
   }
 `;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobileAndTablet } from "../../styles/shared/breakpoints";
 import { Container as Card } from "../Card/styles";
 
 export const Container = styled.div`
@@ -9,6 +10,9 @@ export const Container = styled.div`
   flex-wrap: wrap;
   max-width: 80%;
   margin: 70px 0;
+  ${mobileAndTablet} {
+    margin: 40px 0;
+  }
   ${Card} {
     margin: 12px;
   }

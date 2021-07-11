@@ -20,11 +20,15 @@ export const Pagination = styled.div`
       cursor: pointer;
       margin-right: 32px;
       margin-bottom: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
       &.disabled {
         img {
           filter: invert(77%) sepia(84%) saturate(11%) hue-rotate(64deg)
             brightness(92%) contrast(98%);
         }
+        cursor: default;
       }
       &.active {
         color: ${colors.neonGreen};

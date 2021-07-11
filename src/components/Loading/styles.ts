@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "../../styles/shared/colors";
+import { mobileAndTablet } from "../../styles/shared/breakpoints";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -22,9 +23,13 @@ export const Container = styled.div`
 export const Image = styled.img`
   border-radius: 8px;
   margin-bottom: 30px;
+  border: 2px solid ${colors.darkGray};
 `;
 
 export const Text = styled.div`
   font-size: 28px;
   color: ${colors.white};
+  ${mobileAndTablet} {
+    font-size: 18px;
+  }
 `;

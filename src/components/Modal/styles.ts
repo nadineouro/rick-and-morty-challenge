@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import colors from "../../styles/shared/colors";
+import { mobileAndTablet } from "../../styles/shared/breakpoints";
 
 type ModalProps = {
   open: boolean;
@@ -11,8 +13,13 @@ export const ModalContent = styled.div`
   transform: translate(-50%, -50%);
   width: 70%;
   height: 90%;
-  background-color: #fff;
+  background-color: ${colors.white};
   border-radius: 16px;
+  ${mobileAndTablet} {
+    width: 90%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
 `;
 
 export const Overlay = styled.div<ModalProps>`
