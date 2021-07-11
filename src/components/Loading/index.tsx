@@ -2,7 +2,12 @@ import React from "react";
 import * as S from "./styles";
 import loading from "../../assets/loading.svg";
 
-const Loading: React.FC = () => {
+type Props = {
+  isShowing?: boolean;
+};
+
+const Loading: React.FC<Props> = ({ isShowing = true }) => {
+  if (!isShowing) return null;
   return (
     <S.Overlay>
       <S.Container>

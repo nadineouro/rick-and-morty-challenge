@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Input } from "../components/Input/styles";
-import { Logo } from "../components/Logo/styles";
+import { Input } from "../../components/Input/styles";
+import { Logo } from "../../components/Logo/styles";
 
 export const Container = styled.div`
   display: flex;

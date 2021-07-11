@@ -1,18 +1,8 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
-
-import Logo from "../components/Logo";
-import Input from "../components/Input";
-import Button from "../components/Button";
-import Loading from "../components/Loading";
-import SearchContent from "../components/SearchContent";
-
-import { GET_CHARACTERS } from "../services/character/query";
-import { Character, CharactersArgs } from "../services/character/types";
-
-import * as S from "./styles";
-
-const Home: React.FC = () => {
+import { GET_CHARACTERS } from "../../services/character/query";
+import { Character, CharactersArgs } from "../../services/character/types";
+const useHome = () => {
   const client = useApolloClient();
 
   const [modalOpen, setModalOpen] = React.useState<boolean>(false);
@@ -39,8 +29,6 @@ const Home: React.FC = () => {
   };
 
   const searchCharacters = async (page: number) => {
-    if (page === currentPage) return;
-    setCurrentPage(page);
     const variables: CharactersArgs = { page, filter: { name: inputSearch } };
 
     setCharacters(undefined);
@@ -52,9 +40,9 @@ const Home: React.FC = () => {
       errorPolicy: "ignore",
     });
 
-    const { results, info: { pages = 1 } = {} } = characters || {};
-
+    const { results, info: { pages = 0 } = {} } = characters || {};
     if (pages !== totalPages) setTotalPages(pages);
+    if (results) setCurrentPage(page);
     setCharacters(results);
     setLoading(false);
   };
@@ -72,32 +60,21 @@ const Home: React.FC = () => {
     setInputSearch("");
   };
 
-  return (
-    <S.Container>
-      {loading && <Loading />}
-      <Logo onClick={handleClickLogo} />
-      <S.InputGroup onSubmit={handleSubmitSearch}>
-        <Input
-          value={inputSearch}
-          onChange={handleInputChange}
-          placeholder="Search characteres"
-        />
-        <Button type="submit">Search</Button>
-      </S.InputGroup>
-      {characters && currentPage && (
-        <SearchContent
-          characters={characters}
-          handleClickCard={handleClickCard}
-          activeCharacter={activeCharacter}
-          modalOpen={modalOpen}
-          handleClose={handleClose}
-          handlePageChange={handlePageChange}
-          currentPage={currentPage}
-          totalPages={totalPages}
-        />
-      )}
-    </S.Container>
-  );
+  return {
+    loading,
+    handleClickLogo,
+    handleSubmitSearch,
+    inputSearch,
+    handleInputChange,
+    characters,
+    currentPage,
+    handleClickCard,
+    activeCharacter,
+    modalOpen,
+    handleClose,
+    handlePageChange,
+    totalPages,
+  };
 };
 
-export default Home;
+export default useHome;
