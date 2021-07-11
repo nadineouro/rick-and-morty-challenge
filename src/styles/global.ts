@@ -10,7 +10,8 @@ export default createGlobalStyle`
   
   body {
     background-image: url(${background});
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
     color: ${colors.white};
     font-family: "Nunito", sans-serif;
     font-size: 16px;

@@ -40,22 +40,21 @@ export const Container = styled.div<CardProps>`
     border: 2px solid ${colors.darkGray};
     border-radius: 8px;
     ${props.active && getActiveCardStyle()}
-    ${
-      !props.simple &&
-      css`
-        &:hover {
-          ${getActiveCardStyle()}
-          cursor: pointer;
-        }
-      `
-    }
+    ${!props.simple &&
+    css`
+      &:hover {
+        ${getActiveCardStyle()}
+        cursor: pointer;
+      }
+    `}
     ${Background} {
       height: ${props.simple ? "90%" : "75%"};
       ${getBackgroundStyle(props.image, props.bw)}
     }
     ${CardContent} {
       height: ${props.simple ? "10%" : "25%"};
-      ${!props.simple && getBackgroundStyle(props.image, props.bw)}
+      ${!props.simple && getBackgroundStyle(props.image, props.bw)};
+    }
   `};
 `;
 
