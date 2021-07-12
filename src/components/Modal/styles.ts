@@ -17,8 +17,8 @@ export const ModalContent = styled.div`
   border-radius: 16px;
   ${mobileAndTablet} {
     width: 90%;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    height: auto;
+    max-height: 80%;
   }
 `;
 
@@ -30,6 +30,8 @@ export const Overlay = styled.div<ModalProps>`
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
   ${ModalContent} {
     display: ${(props) => (props.open ? "block" : "none")};
   } ;

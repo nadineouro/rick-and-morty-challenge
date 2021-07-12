@@ -33,49 +33,51 @@ const CharacterViewModal: React.FC<Props> = ({
 }) => {
   const { isMobileOrTablet } = useDevice();
   return (
-    <Modal open={open} onClose={onClose}>
-      <S.Container>
-        <S.SideContent>
-          <S.BackgroundImage image={image} />
-          <S.Content>
-            <Button onClick={onClose}>
-              {isMobileOrTablet ? <img src={close} alt="fechar" /> : "Close"}
-            </Button>
-            <Card
-              image={image}
-              mainText={name}
-              subText={species}
-              size="large"
-              simple
+    <S.Container>
+      <Modal open={open} onClose={onClose}>
+        <S.GeneralContent>
+          <S.SideContent>
+            <S.BackgroundImage image={image} />
+            <S.Content>
+              <Button onClick={onClose}>
+                {isMobileOrTablet ? <img src={close} alt="fechar" /> : "Close"}
+              </Button>
+              <Card
+                image={image}
+                mainText={name}
+                subText={species}
+                size="large"
+                simple
+              />
+            </S.Content>
+          </S.SideContent>
+          <S.MainContent>
+            <About
+              name={name}
+              gender={gender}
+              species={species}
+              type={type}
+              status={status}
+              episode={episode}
             />
-          </S.Content>
-        </S.SideContent>
-        <S.MainContent>
-          <About
-            name={name}
-            gender={gender}
-            species={species}
-            type={type}
-            status={status}
-            episode={episode}
-          />
-          <PlacementDescription
-            title="Origin"
-            type={origin?.type}
-            name={origin?.name}
-            dimension={origin?.dimension}
-            residents={origin?.residents}
-          />
-          <PlacementDescription
-            title="Location"
-            type={location?.type}
-            name={location?.name}
-            dimension={location?.dimension}
-            residents={location?.residents}
-          />
-        </S.MainContent>
-      </S.Container>
-    </Modal>
+            <PlacementDescription
+              title="Origin"
+              type={origin?.type}
+              name={origin?.name}
+              dimension={origin?.dimension}
+              residents={origin?.residents}
+            />
+            <PlacementDescription
+              title="Location"
+              type={location?.type}
+              name={location?.name}
+              dimension={location?.dimension}
+              residents={location?.residents}
+            />
+          </S.MainContent>
+        </S.GeneralContent>
+      </Modal>
+    </S.Container>
   );
 };
 
