@@ -13,7 +13,7 @@ type Props = {
 const CharacterList: React.FC<Props> = ({ characters, onClick, active }) => {
   if (!characters || !characters.length) return null;
   return (
-    <S.Container>
+    <S.Container data-testid="characterList">
       {characters.map(({ id, image, name, species, status }) => (
         <Card
           key={id}
@@ -24,6 +24,7 @@ const CharacterList: React.FC<Props> = ({ characters, onClick, active }) => {
           active={active === id}
           bw={status === "Dead"}
           onClick={onClick}
+          data-testid="card"
         />
       ))}
     </S.Container>

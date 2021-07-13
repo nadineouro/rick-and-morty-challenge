@@ -27,7 +27,7 @@ const Home: React.FC = () => {
   } = useHome();
   return (
     <S.Container>
-      <Loading isShowing={loading} />
+      <Loading show={loading} />
       <Logo onClick={handleClickLogo} />
       <S.InputGroup onSubmit={handleSubmitSearch}>
         <Input

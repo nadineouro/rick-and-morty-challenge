@@ -1,6 +1,8 @@
 import React from "react";
 import * as S from "./styles";
 
-const Title: React.FC = ({ children }) => <S.Title>{children}</S.Title>;
+const Title: React.FC = ({ children }) => (
+  <S.Title data-testid="title">{children}</S.Title>
+);
 
 export default Title;

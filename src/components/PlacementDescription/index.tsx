@@ -1,10 +1,11 @@
 import React from "react";
 import Title from "../Title";
-import * as S from "./styles";
-import people from "../../assets/icons/people.svg";
-import { Resident } from "../../services/character/types";
+import Residents from "../Residents";
 
+import { Resident } from "../../services/character/types";
 import useDevice from "../../utils/useDevice";
+
+import * as S from "./styles";
 
 type Props = {
   title: string;
@@ -16,25 +17,25 @@ type Props = {
 
 const PlacementDescription: React.FC<Props> = ({
   title,
-  type,
-  name,
-  dimension,
+  type = "Unknown Planet",
+  name = "Unknown",
+  dimension = "Unknown",
   residents,
 }) => {
   const { isMobileOrTablet } = useDevice();
-  if (isMobileOrTablet && (!type || !name || !dimension)) return null;
+
+  const missingProps = [type, name, dimension].some((prop) =>
+    prop?.includes("Unknown")
+  );
+  if (isMobileOrTablet && missingProps) return null;
+
   return (
-    <S.Container>
+    <S.Container data-testid={`placementDescription${title}`}>
       <Title>{title}</Title>
-      <S.Type>{type || "Unknown Planet"}</S.Type>
-      <S.Name>{name || "Unknown"}</S.Name>
-      <S.Dimension>{dimension || "Unknown"}</S.Dimension>
-      {!!residents?.length && (
-        <S.Residents>
-          <S.Icon src={people} />
-          {residents.length} residents
-        </S.Residents>
-      )}
+      <S.Type data-testid='locationType'>{type}</S.Type>
+      <S.Name data-testid='locationName'>{name}</S.Name>
+      <S.Dimension data-testid='locationDimension'>{dimension}</S.Dimension>
+      <Residents residents={residents} />
     </S.Container>
   );
 };

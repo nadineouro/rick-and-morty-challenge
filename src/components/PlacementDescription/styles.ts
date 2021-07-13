@@ -32,12 +32,3 @@ export const Dimension = styled.div`
     font-size: 16px;
   }
 `;
-
-export const Residents = styled.div`
-  font-size: 14px;
-  color: ${colors.gray};
-`;
-
-export const Icon = styled.img`
-  margin-right: 10px;
-`;

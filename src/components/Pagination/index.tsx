@@ -14,7 +14,7 @@ type Props = {
 
 const Pagination: React.FC<Props> = ({ currentPage, totalPages, onChange }) => {
   return (
-    <S.Pagination>
+    <S.Pagination data-testid="pagination">
       <ReactPaginate
         pageCount={totalPages}
         pageRangeDisplayed={4}
@@ -28,6 +28,7 @@ const Pagination: React.FC<Props> = ({ currentPage, totalPages, onChange }) => {
         activeClassName="active"
         disabledClassName="disabled"
         breakLabel=""
+        data-testid="test"
       />
     </S.Pagination>
   );

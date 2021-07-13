@@ -12,8 +12,8 @@ const Modal: React.FC<Props> = ({ open, onClose = () => {}, children }) => {
   }, [open]);
 
   return (
-    <S.Overlay open={open} onClick={onClose}>
-      <S.ModalContent onClick={(e) => e.stopPropagation()}>
+    <S.Overlay open={open} onClick={onClose} data-testid="modalOverlay">
+      <S.ModalContent onClick={(e) => e.stopPropagation()} data-testid="modal">
         {children}
       </S.ModalContent>
     </S.Overlay>

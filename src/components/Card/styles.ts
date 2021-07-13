@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 import colors from "../../styles/shared/colors";
-import { mobileAndTablet, mediumScreen } from "../../styles/shared/breakpoints";
+import {
+  mobileAndTablet,
+  smallScreen,
+  mediumScreen,
+} from "../../styles/shared/breakpoints";
 
 type CardProps = {
   image: string;
@@ -59,7 +63,6 @@ export const Container = styled.div<CardProps>`
     }
 
     ${mobileAndTablet} {
-      height: ${props.size === "large" && "190px"};
       width: ${props.size === "large" && "70%"};
       ${Background} {
         height: 70%;
@@ -68,6 +71,9 @@ export const Container = styled.div<CardProps>`
         height: 30%;
         ${getBackgroundStyle(props.image, props.bw)}
       }
+    }
+    ${smallScreen} {
+      height: ${props.size === "large" && "190px"};
     }
     ${mediumScreen} {
       height: ${props.size === "large" && "230px"};

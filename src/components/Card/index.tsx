@@ -34,12 +34,13 @@ const Card: React.FC<Props> = ({
       size={size}
       bw={bw}
       onClick={() => handleClick(id)}
+      data-testid="card"
     >
-      <S.Background />
-      <S.CardContent>
+      <S.Background data-testid="mainBackground" />
+      <S.CardContent data-testid="cardContent">
         <S.TextContent>
-          <S.MainText>{mainText}</S.MainText>
-          <S.SubText>{subText}</S.SubText>
+          <S.MainText data-testid="mainText">{mainText}</S.MainText>
+          <S.SubText data-testid="subText">{subText}</S.SubText>
         </S.TextContent>
       </S.CardContent>
     </S.Container>

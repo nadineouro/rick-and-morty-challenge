@@ -29,7 +29,7 @@ const SearchContent: React.FC<Props> = ({
   totalPages,
 }) => {
   return (
-    <S.Container>
+    <S.Container data-testid="searchContent">
       <CharacterList
         characters={characters}
         onClick={handleClickCard}

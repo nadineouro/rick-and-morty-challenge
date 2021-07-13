@@ -13,7 +13,7 @@ export type Props = Pick<
 const About: React.FC<Props> = (props) => {
   const description = getDescription(props);
   return (
-    <S.Container>
+    <S.Container data-testid="about">
       <Title>About</Title>
       {description}
     </S.Container>

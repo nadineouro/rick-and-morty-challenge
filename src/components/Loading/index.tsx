@@ -3,14 +3,14 @@ import * as S from "./styles";
 import loading from "../../assets/loading.svg";
 
 type Props = {
-  isShowing?: boolean;
+  show?: boolean;
 };
 
-const Loading: React.FC<Props> = ({ isShowing = true }) => {
-  if (!isShowing) return null;
+const Loading: React.FC<Props> = ({ show = true }) => {
+  if (!show) return null;
   return (
-    <S.Overlay>
-      <S.Container>
+    <S.Overlay data-testid="loadingOverlay">
+      <S.Container data-testid="loading">
         <S.Image src={loading} />
         <S.Text>Loading</S.Text>
       </S.Container>
