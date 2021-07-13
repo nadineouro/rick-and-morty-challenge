@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 
 import people from "../../assets/icons/people.svg";
-import { mockResidents } from "./mocks";
 import Residents from ".";
+
+const mockResidents = { residents: [{ id: 1 }, { id: 2 }] };
 
 describe("Residents", () => {
   it("should render Residents with correct people number", () => {

@@ -1,8 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { mockPagination, onChange } from "./mocks";
 import Pagination from ".";
+
+const onChange = jest.fn();
+const mockPagination = { currentPage: 1, totalPages: 10, onChange };
 
 describe("Pagination", () => {
   it("should render pagination with correct current page", () => {

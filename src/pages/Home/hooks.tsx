@@ -13,7 +13,8 @@ const useHome = () => {
   const [currentPage, setCurrentPage] = React.useState<number>();
   const [totalPages, setTotalPages] = React.useState<number>(1);
 
-  const handleInputChange = (e: any) => setInputSearch(e.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setInputSearch(e.target.value);
 
   const handleClose = () => {
     setActiveCharacter(undefined);

@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
 
-import { mockCharacterViewModal } from "./mocks";
+import { character } from "../../mocks";
 import CharacterViewModal from ".";
+
+const mockCharacterViewModal = { open: true, onClose: () => {}, character };
 
 describe("CharacterViewModal", () => {
   it("should render characterViewModal and its correspondents children", () => {

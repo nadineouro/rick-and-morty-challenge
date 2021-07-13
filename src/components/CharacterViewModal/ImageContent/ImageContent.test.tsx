@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
 
-import { mockImageContent } from "./mocks";
+import { image } from "../../../mocks";
 import ImageContent from ".";
+
+const mockImageContent = { image, mainText: "Rick Sanchez", subText: "Human" };
 
 describe("ImageContent", () => {
   it("should render all image content components", () => {

@@ -1,10 +1,12 @@
 import { Props } from ".";
 
+import { Episode } from "../../services/character/types";
+
 type Option = {
   [key: string]: any;
 };
 
-const getBasedOnGender = (gender: string) => {
+export const getBasedOnGender = (gender: string) => {
   const basedOnGender: Option = {
     Male: { pronoun: "He" },
     Female: { pronoun: "She" },
@@ -13,7 +15,7 @@ const getBasedOnGender = (gender: string) => {
   return basedOnGender[gender];
 };
 
-const getBasedOnStatus = (status: string, pronoun: string) => {
+export const getBasedOnStatus = (status: string, pronoun: string) => {
   const basedOnStatus: Option = {
     Dead: {
       verbToBe: "was",
@@ -31,17 +33,22 @@ const getBasedOnStatus = (status: string, pronoun: string) => {
   return basedOnStatus[status];
 };
 
-const getFormattedSpecies = (species: string, type: string) => {
+export const getFormattedSpecies = (species: string, type: string) => {
   if (!type) return species.toLowerCase();
   return `${species.toLowerCase()} (${type})`;
 };
 
-const getFormattedGender = (gender: string) => {
+export const getFormattedGender = (gender: string) => {
   if (!gender || gender === "unknown") return "";
   return gender.toLowerCase();
 };
 
-const getPhraseDetails = ({
+export const getLastSeen = (episode: Episode[]) => {
+  if (!episode?.length) return "";
+  return `Last seen in ${episode[episode.length - 1].air_date}.`;
+};
+
+export const getPhraseDetails = ({
   status,
   gender,
   species,
@@ -56,7 +63,7 @@ const getPhraseDetails = ({
     statusPhrase,
     formattedGender: getFormattedGender(gender),
     formattedSpecies: getFormattedSpecies(species, type),
-    lastSeen: episode[episode.length - 1].air_date,
+    lastSeen: getLastSeen(episode),
   };
 };
 
@@ -69,5 +76,5 @@ export const getDescription = (props: Props) => {
     lastSeen,
   } = getPhraseDetails(props);
 
-  return `${props.name} ${verbToBe} a ${formattedGender} ${formattedSpecies}. ${statusPhrase}. Last seen in ${lastSeen}.`;
+  return `${props.name} ${verbToBe} a ${formattedGender} ${formattedSpecies}. ${statusPhrase}. ${lastSeen}`;
 };

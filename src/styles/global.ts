@@ -11,6 +11,7 @@ export default createGlobalStyle`
   body {
     background-image: url(${background});
     background-repeat: no-repeat;
+    background-position-x: center;
     background-color: black;
     color: ${colors.white};
     font-family: "Nunito", sans-serif;

@@ -1,8 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { mockCharacterList, onClick } from "./mocks";
+import { character } from "../../mocks";
 import CharacterList from ".";
+
+const onClick = jest.fn();
+const mockCharacterList = { characters: [character], onClick };
 
 describe("CharacterList", () => {
   it("should render characterList", () => {

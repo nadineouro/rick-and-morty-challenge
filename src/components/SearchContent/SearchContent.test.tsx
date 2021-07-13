@@ -1,7 +1,20 @@
 import { render, screen } from "@testing-library/react";
 
-import { mockSearchContent } from "./mocks";
+import { character } from "../../mocks";
 import SearchContent from ".";
+
+const func = jest.fn();
+
+const mockSearchContent = {
+  characters: [character],
+  handleClickCard: func,
+  modalOpen: true,
+  handleClose: func,
+  handlePageChange: func,
+  currentPage: 1,
+  totalPages: 10,
+  activeCharacter: character,
+};
 
 describe("SearchContent", () => {
   it("should render searchContent and its correspondents children", () => {
