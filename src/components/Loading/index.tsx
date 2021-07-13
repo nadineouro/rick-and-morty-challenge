@@ -11,7 +11,7 @@ const Loading: React.FC<Props> = ({ show = true }) => {
   return (
     <S.Overlay data-testid="loadingOverlay">
       <S.Container data-testid="loading">
-        <S.Image src={loading} />
+        <S.Image src={loading} alt="loading" />
         <S.Text>Loading</S.Text>
       </S.Container>
     </S.Overlay>

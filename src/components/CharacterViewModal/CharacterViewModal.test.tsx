@@ -13,4 +13,10 @@ describe("CharacterViewModal", () => {
     expect(screen.getByTestId("imageContent")).toBeInTheDocument();
     expect(screen.getByTestId("mainContent")).toBeInTheDocument();
   });
+  it("should not render characterViewModal content", () => {
+    render(
+      <CharacterViewModal {...mockCharacterViewModal} character={undefined} />
+    );
+    expect(screen.queryByTestId("modalGroup")).toBeNull();
+  });
 });

@@ -40,13 +40,11 @@ const SearchContent: React.FC<Props> = ({
         totalPages={totalPages}
         onChange={handlePageChange}
       />
-      {activeCharacter && (
-        <CharacterViewModal
-          open={modalOpen}
-          onClose={handleClose}
-          character={activeCharacter}
-        />
-      )}
+      <CharacterViewModal
+        open={modalOpen}
+        onClose={handleClose}
+        character={activeCharacter}
+      />
     </S.Container>
   );
 };

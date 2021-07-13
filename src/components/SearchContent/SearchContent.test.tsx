@@ -25,11 +25,10 @@ describe("SearchContent", () => {
     expect(screen.getByTestId("characterList")).toBeInTheDocument();
     expect(screen.getByTestId("characterViewModal")).toBeInTheDocument();
   });
-  it("should render searchContent without character view modal", () => {
+  it("should render searchContent without character view modal content", () => {
     render(
       <SearchContent {...mockSearchContent} activeCharacter={undefined} />
     );
-
-    expect(screen.queryByTestId("characterViewModal")).toBeNull();
+    expect(screen.queryByTestId("modalGroup")).toBeNull();
   });
 });
