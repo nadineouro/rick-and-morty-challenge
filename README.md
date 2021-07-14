@@ -8,6 +8,7 @@
     This is an application based on a frontend challenge proposed by inGaia company, where the user must be able to search for characters from Rick and Morty cartoon and see more details about them.
   </h3>
   <p align="center">
+    <a href="#-online-access">Online Access</a> •
     <a href="#-how-it-works">How it works</a> •
     <a href="#-installation">Installation</a> •
     <a href="#-usage">Usage</a> • 
@@ -17,6 +18,10 @@
     <a href="#-license">License</a>
   </p>
 </div>
+
+## 🖱️ Online Access 
+
+The application is hosted and accessible online on GitHub Pages and you can access it by clicking [here](https://nadineouro.github.io/rick-and-morty-challenge). It's also possible to run it locally following the [installation](#-installation) and [usage](#-usage) steps
 
 ## 💻 How it works
 
