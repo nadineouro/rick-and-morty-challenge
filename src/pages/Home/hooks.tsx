@@ -84,6 +84,4 @@ const useHome = () => {
   };
 };
 
-console.log('Pull Request CI test');
-
 export default useHome;
