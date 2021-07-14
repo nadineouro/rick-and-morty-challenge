@@ -19,6 +19,7 @@ const Home: React.FC = () => {
     characters,
     currentPage,
     handleClickCard,
+    handleFocusCard,
     activeCharacter,
     modalOpen,
     handleClose,
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
           value={inputSearch}
           onChange={handleInputChange}
           placeholder="Search characteres"
+          title="Type search term here"
         />
         <Button type="submit">Search</Button>
       </S.InputGroup>
@@ -41,6 +43,7 @@ const Home: React.FC = () => {
         <SearchContent
           characters={characters}
           handleClickCard={handleClickCard}
+          handleFocusCard={handleFocusCard}
           activeCharacter={activeCharacter}
           modalOpen={modalOpen}
           handleClose={handleClose}

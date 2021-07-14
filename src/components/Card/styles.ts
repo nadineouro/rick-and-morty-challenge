@@ -39,6 +39,7 @@ export const CardContent = styled.div`
 
 export const Container = styled.div<CardProps>`
   ${(props) => css`
+    outline: none;
     height: ${props.size === "small" ? "224px" : "80%"};
     width: ${props.size === "small" ? "224px" : "100%"};
     overflow: hidden;

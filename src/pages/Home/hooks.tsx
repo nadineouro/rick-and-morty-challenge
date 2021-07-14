@@ -21,11 +21,16 @@ const useHome = () => {
     setModalOpen(false);
   };
 
-  const handleClickCard = (id?: number) => {
+  const handleFocusCard = (id?: number) => {
+    if (modalOpen) return;
     const currCharacter = characters?.find(
       (character: Character) => character.id === id
     );
     setActiveCharacter(currCharacter);
+  };
+
+  const handleClickCard = (id?: number) => {
+    handleFocusCard(id);
     setModalOpen(true);
   };
 
@@ -70,6 +75,7 @@ const useHome = () => {
     characters,
     currentPage,
     handleClickCard,
+    handleFocusCard,
     activeCharacter,
     modalOpen,
     handleClose,

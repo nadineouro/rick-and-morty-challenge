@@ -10,6 +10,7 @@ import * as S from "./styles";
 type Props = {
   characters: Character[];
   handleClickCard: (id?: number) => void;
+  handleFocusCard: (id?: number) => void;
   activeCharacter?: Character;
   modalOpen: boolean;
   handleClose: () => void;
@@ -21,6 +22,7 @@ type Props = {
 const SearchContent: React.FC<Props> = ({
   characters,
   handleClickCard,
+  handleFocusCard,
   activeCharacter,
   modalOpen,
   handleClose,
@@ -33,6 +35,7 @@ const SearchContent: React.FC<Props> = ({
       <CharacterList
         characters={characters}
         onClick={handleClickCard}
+        onFocus={handleFocusCard}
         active={activeCharacter?.id}
       />
       <Pagination

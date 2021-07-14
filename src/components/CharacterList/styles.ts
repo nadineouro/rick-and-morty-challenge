@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { mobileAndTablet } from "../../styles/shared/breakpoints";
 import { Container as Card } from "../Card/styles";
 
-export const Container = styled.div`
+export const Container = styled.ul`
+  list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,6 +14,9 @@ export const Container = styled.div`
   ${mobileAndTablet} {
     margin: 40px 0;
   }
+`;
+
+export const ListItem = styled.li`
   ${Card} {
     margin: 12px;
   }

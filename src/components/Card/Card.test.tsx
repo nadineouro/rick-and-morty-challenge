@@ -19,6 +19,7 @@ const mockLayout = {
 };
 
 const onClick = jest.fn();
+const onFocus = jest.fn();
 
 describe("Card", () => {
   it("should render card with correct content", () => {
@@ -72,5 +73,11 @@ describe("Card", () => {
     render(<Card {...mockCard} onClick={onClick} />);
     userEvent.click(screen.getByTestId("cardContent"));
     expect(onClick).toBeCalledTimes(1);
+  });
+  it("should trigger onFocus event on card focus", () => {
+    render(<Card {...mockCard} onFocus={onFocus} />);
+    userEvent.tab();
+    expect(screen.getByTestId("card")).toHaveFocus();
+    expect(onFocus).toBeCalledTimes(1);
   });
 });

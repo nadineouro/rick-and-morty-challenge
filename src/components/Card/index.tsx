@@ -11,6 +11,7 @@ type Props = {
   bw?: boolean;
   id?: number;
   onClick?: (id?: number) => void;
+  onFocus?: (id?: number) => void;
 };
 
 const Card: React.FC<Props> = ({
@@ -23,8 +24,16 @@ const Card: React.FC<Props> = ({
   active = false,
   bw = false,
   onClick,
+  onFocus,
 }) => {
-  const handleClick = (id?: number) => onClick && onClick(id);
+  const handleClick = () => onClick && onClick(id);
+
+  const handleFocus = () => onFocus && onFocus(id);
+
+  const handleKeyDown = (e: any) => {
+    if (!onClick) return;
+    if (e.keyCode === 13) onClick(id);
+  };
 
   return (
     <S.Container
@@ -33,7 +42,10 @@ const Card: React.FC<Props> = ({
       simple={simple}
       size={size}
       bw={bw}
-      onClick={() => handleClick(id)}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      onFocus={handleFocus}
+      tabIndex={0}
       data-testid="card"
     >
       <S.Background data-testid="mainBackground" />

@@ -8,6 +8,7 @@ const func = jest.fn();
 const mockSearchContent = {
   characters: [character],
   handleClickCard: func,
+  handleFocusCard: func,
   modalOpen: true,
   handleClose: func,
   handlePageChange: func,
