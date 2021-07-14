@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/rick-and-morty-challenge/static/js/main.37e80b30.chunk.js",
-    "main.js.map": "/rick-and-morty-challenge/static/js/main.37e80b30.chunk.js.map",
+    "main.js": "/rick-and-morty-challenge/static/js/main.9a435f7f.chunk.js",
+    "main.js.map": "/rick-and-morty-challenge/static/js/main.9a435f7f.chunk.js.map",
     "runtime-main.js": "/rick-and-morty-challenge/static/js/runtime-main.ec1b5c35.js",
     "runtime-main.js.map": "/rick-and-morty-challenge/static/js/runtime-main.ec1b5c35.js.map",
     "static/js/2.8383c734.chunk.js": "/rick-and-morty-challenge/static/js/2.8383c734.chunk.js",
@@ -19,6 +19,6 @@
   "entrypoints": [
     "static/js/runtime-main.ec1b5c35.js",
     "static/js/2.8383c734.chunk.js",
-    "static/js/main.37e80b30.chunk.js"
+    "static/js/main.9a435f7f.chunk.js"
   ]
 }
