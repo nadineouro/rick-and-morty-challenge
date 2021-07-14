@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import colors from "../../styles/shared/colors";
+import { swing } from "../../styles/shared/animations";
 import {
   mobileAndTablet,
   smallScreen,
@@ -17,6 +18,7 @@ type CardProps = {
 const getActiveCardStyle = () => css`
   border-color: ${colors.neonGreen};
   box-shadow: 0 0 10px ${colors.neonGreen};
+  animation: ${swing} 0.4s;
 `;
 
 const getBackgroundStyle = (image: string, bw: boolean) => css`

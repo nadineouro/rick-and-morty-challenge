@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import colors from "../../styles/shared/colors";
 import { mobileAndTablet } from "../../styles/shared/breakpoints";
+import { ellipsis } from "../../styles/shared/animations";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -31,5 +32,13 @@ export const Text = styled.div`
   color: ${colors.white};
   ${mobileAndTablet} {
     font-size: 18px;
+  }
+  :after {
+    display: inline-block;
+    vertical-align: bottom;
+    overflow: hidden;
+    animation: ${ellipsis} 3s infinite;
+    content: "...";
+    color: ${colors.white};
   }
 `;

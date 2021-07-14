@@ -21,20 +21,18 @@ const CharacterList: React.FC<Props> = ({
   return (
     <S.Container data-testid="characterList" aria-label="List of Characters">
       {characters.map(({ id, image, name, species, status }) => (
-        <S.ListItem key={id}>
-          <Card
-            key={id}
-            id={id}
-            image={image}
-            mainText={name}
-            subText={species}
-            active={active === id}
-            bw={status === "Dead"}
-            onClick={onClick}
-            onFocus={onFocus}
-            data-testid="card"
-          />
-        </S.ListItem>
+        <Card
+          key={id}
+          id={id}
+          image={image}
+          mainText={name}
+          subText={species}
+          active={active === id}
+          bw={status === "Dead"}
+          onClick={onClick}
+          onFocus={onFocus}
+          data-testid="card"
+        />
       ))}
     </S.Container>
   );

@@ -29,7 +29,7 @@ const Home: React.FC = () => {
   return (
     <S.Container>
       <Loading show={loading} />
-      <Logo onClick={handleClickLogo} />
+      <Logo onClick={handleClickLogo} title="Click here to clear search" />
       <S.InputGroup onSubmit={handleSubmitSearch}>
         <Input
           value={inputSearch}
@@ -37,7 +37,9 @@ const Home: React.FC = () => {
           placeholder="Search characteres"
           title="Type search term here"
         />
-        <Button type="submit">Search</Button>
+        <Button type="submit" title="Click here to search characters">
+          Search
+        </Button>
       </S.InputGroup>
       {characters && currentPage && (
         <SearchContent

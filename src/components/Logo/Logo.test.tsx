@@ -19,4 +19,11 @@ describe("Logo", () => {
     userEvent.click(screen.getByRole("img"));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+  it("should render logo with title attribute", () => {
+    render(<Logo title="Click here to clear search" />);
+    expect(screen.getByRole("img")).toHaveAttribute(
+      "title",
+      "Click here to clear search"
+    );
+  });
 });
